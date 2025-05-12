@@ -1,0 +1,47 @@
+KIT DE RECURSOS DO WINDOWS (SYSINTERNALS PSTOOLS)
+=================================================
+Faça o download do kit de ferramentas Sysinternals:
+
+Download: https://download.sysinternals.com/files/PSTools.zip
+
+Após o download, extraia o conteúdo para uma pasta, por exemplo: C:\Ferramentas\PSTools
+
+
+ACESSO REMOTO VIA CMD COM PSTOOLS
+=================================
+1. Acesse o diretório onde extraiu o PSTools:
+   cd C:\Ferramentas\PSTools
+
+2. Execute um terminal CMD remoto com autenticação:
+   PsExec.exe \\NOME_DO_PC -u CIT\USUARIO_DE_REDE -p SUA_SENHA cmd
+
+   Substitua NOME_DO_PC, USUARIO_DE_REDE e SUA_SENHA com os dados reais.
+
+
+MAPEAMENTO E DESCONECTAR DIRETÓRIOS DE REDE
+===========================================
+Mapear diretório de rede:
+   net use \\IP_DO_SERVIDOR\COMPARTILHAMENTO /user:CIT\USUARIO SENHA123
+
+Desfazer o mapeamento:
+   net use \\IP_DO_SERVIDOR\COMPARTILHAMENTO /delete
+
+Listar todas as conexões:
+   net use
+
+Remover todas as conexões:
+   net use * /delete
+
+
+COPIAR SCRIPT DE UM DIRETÓRIO MAPEADO
+=====================================
+Criar pasta de destino (se necessário):
+   md C:\Temp
+
+Copiar script da rede para o destino:
+   copy \\IP_DO_SERVIDOR\COMPARTILHAMENTO\script.ps1 C:\Temp\
+
+
+EXECUTAR SCRIPT POWERSHELL LOCALMENTE
+=====================================
+   powershell -ExecutionPolicy Bypass -File "C:\Temp\script.ps1"
